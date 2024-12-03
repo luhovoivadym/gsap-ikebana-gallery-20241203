@@ -4,23 +4,40 @@ import gsap from "gsap";
 
 const MinimapPointer = ({ isSingleColumn }) => {
     const [scrollY, setScrollY] = useState(0);
+    var translateY = 0, stop_pointer = 0, restart_pointer = 0, parallax_rate = 0;
+    if (window.innerWidth >= 2522) {
+        stop_pointer = 4600;
+        restart_pointer = 35939;
+        parallax_rate = 0.09;
+    } else if (window.innerWidth >= 1920) {
+        stop_pointer = 3000;
+        restart_pointer = 38066;
+        parallax_rate = 0.09;
+    } else if (window.innerWidth >= 1440) {
+        stop_pointer = 3000;
+        restart_pointer = 38066;
+        parallax_rate = 0.09;
+    } else if (window.innerWidth >= 1024) {
+        stop_pointer = 2839;
+        restart_pointer = 31639;
+        parallax_rate = 0.085;
+    } else if (window.innerWidth >= 393) {
+        stop_pointer = 4600;
+        restart_pointer = 35939;
+        parallax_rate = 0.09;
+    }
 
-    let parallaxStyle
-    if (scrollY < 4600) {
-        parallaxStyle = {
-            transform: `translateY(${scrollY * 0.09}px)`,
-            transition: 'transform 0.5s ease-out',
-        }
-    } else if (scrollY >= 4600 && scrollY < 35939) {
-        parallaxStyle = {
-            transform: `translateY(${414}px)`,
-            transition: 'transform 0.5s ease-out',
-        }
-    } else if (scrollY >= 35939) {
-        parallaxStyle = {
-            transform: `translateY(${414 + (scrollY - 35939) * 0.09}px)`,
-            transition: 'transform 0.5s ease-out',
-        }
+    if (scrollY < stop_pointer) {
+        translateY = scrollY * parallax_rate;
+    } else if (scrollY < restart_pointer) {
+        translateY = stop_pointer * parallax_rate;
+    } else if (scrollY >= restart_pointer) {
+        translateY = (scrollY - restart_pointer + stop_pointer) * parallax_rate;
+    }
+
+    const parallaxStyle = {
+        transform: `translateY(${translateY}px)`,
+        transition: 'transform 0.5s ease-out',
     }
 
     useEffect(() => {

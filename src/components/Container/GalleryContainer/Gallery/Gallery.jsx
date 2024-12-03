@@ -8,23 +8,41 @@ gsap.registerPlugin(Flip);
 
 const Gallery = ({ isSingleColumn, imageIndexes, setShowImageName, setHoveredImageName }) => {
     const [scrollY, setScrollY] = useState(0);
-    let parallaxStyle = 0;
-    if (scrollY < 4600) {
-        parallaxStyle = {
-            transform: `translateY(${-scrollY * 0}px)`,
-            transition: 'transform 0.5s ease-out',
-        }
-    } else if (scrollY >= 4600 && scrollY < 35939) {
-        parallaxStyle = {
-            transform: `translateY(${(-(scrollY - 4600)) * 0.09}px)`,
-            transition: 'transform 0.5s ease-out',
-        }
-    } else if (scrollY >= 35939) {
-        parallaxStyle = {
-            transform: `translateY(${(-2818)}px)`,
-            transition: 'transform 0.5s ease-out',
-        }
+    var translateY = 0, stop_pointer = 0, restart_pointer = 0, parallax_rate = 0;
+    if (window.innerWidth >= 2522) {
+        stop_pointer = 4600;
+        restart_pointer = 35939;
+        parallax_rate = 0.09;
+    } else if (window.innerWidth >= 1920) {
+        stop_pointer = 3000;
+        restart_pointer = 38066;
+        parallax_rate = 0.09;
+    } else if (window.innerWidth >= 1440) {
+        stop_pointer = 3000;
+        restart_pointer = 38066;
+        parallax_rate = 0.09;
+    } else if (window.innerWidth >= 1024) {
+        stop_pointer = 2839;
+        restart_pointer = 31639;
+        parallax_rate = 0.085;
+    } else if (window.innerWidth >= 393) {
+        stop_pointer = 4600;
+        restart_pointer = 35939;
+        parallax_rate = 0.09;
     }
+    if (scrollY < stop_pointer) {
+        translateY = 0;
+    } else if (scrollY < restart_pointer) {
+        translateY = (-(scrollY - stop_pointer)) * parallax_rate;
+    } else if (scrollY >= restart_pointer) {
+        translateY = (-(restart_pointer - stop_pointer)) * parallax_rate;
+    }
+
+    const parallaxStyle = {
+        transform: `translateY(${translateY}px)`,
+        transition: 'transform 0.5s ease-out',
+    }
+
     const scopeRef = useRef();
     const mapcoverRef = useRef(); // Reference for the mapcover div
 
@@ -92,7 +110,7 @@ const Gallery = ({ isSingleColumn, imageIndexes, setShowImageName, setHoveredIma
                 } else if (screenWidth >= 1024 && screenWidth < 1440) {
                     targetWidth = isSingleColumn ? 76 : 2000;
                     targetHeight = isSingleColumn ? 550 : 2900;
-                    targetLeft = isSingleColumn ? 944 : 0;
+                    targetLeft = isSingleColumn ? 930 : 0;
                     targetTop = isSingleColumn ? 248 : 0;
                     targetColor = isSingleColumn ? "rgba(210, 210, 210, 0.25)" : "white";
                 } else if (screenWidth >= 393 && screenWidth < 1024) {

@@ -1,0 +1,25 @@
+.container {
+    background-color: yellowgreen;
+    width: 2522px;
+    height: 100vh;
+    overflow: hidden;
+
+    @media (max-width: 2521px) and (min-width: 1920px) {
+        width: 1920px;
+    }
+
+    /* For screens between 1440px and 1919px */
+    @media (max-width: 1919px) and (min-width: 1440px) {
+        width: 1440px;
+    }
+
+    /* For screens between 1024px and 1439px */
+    @media (max-width: 1439px) and (min-width: 1024px) {
+        width: 1024px;
+    }
+
+    /* For screens 1023px and narrower */
+    @media (max-width: 1023px) {
+        width: 393px;
+    }
+}

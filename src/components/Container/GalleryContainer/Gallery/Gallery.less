@@ -1,0 +1,110 @@
+.mapcover {
+    position: fixed;
+    overflow: hidden;
+    border-radius: 4px;
+    padding: 8px;
+
+    .gallery {
+        // cursor: none;
+        width: 2800px;
+        height: 3248px;
+        top: 90px;
+        left: 8px;
+
+        @media (max-width: 2521px) and (min-width: 1920px) {
+            width: 2522px;
+            height: 3248px;
+        }
+
+        /* For screens between 1440px and 1919px */
+        @media (max-width: 1919px) and (min-width: 1440px) {
+            width: 2522px;
+            height: 3248px;
+        }
+
+        /* For screens between 1024px and 1439px */
+        @media (max-width: 1439px) and (min-width: 1024px) {
+            width: 2000px;
+            height: 2900px;
+        }
+
+        /* For screens 1023px and narrower */
+        @media (max-width: 1023px) {
+            width: 2000px;
+            height: 2150px;
+        }
+
+        .image {
+            transition: transform 0.3s ease;
+
+            &.hovered {
+                transform: scale(1.2);
+                z-index: 1;
+            }
+
+            &.dimmed {
+                transform: scale(0.8);
+            }
+        }
+
+        .custom-cursor {
+            position: fixed;
+            width: 81px;
+            height: 81px;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 60;
+            transform: translate(-50%, -50%);
+
+
+            &.small {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        &.multiple-columns {
+            display: flex;
+            flex-direction: row;
+            left: 100px;
+            gap: 280px;
+
+            .col {
+                display: flex;
+                flex-direction: column;
+                gap: 120px;
+            }
+        }
+
+        &.single-column {
+            position: absolute;
+            top: 0px;
+            left: 8px;
+
+            img {
+                width: 80px;
+                height: auto;
+                object-fit: cover;
+
+                @media (max-width: 2521px) and (min-width: 1920px) {
+                    width: 80px;
+                }
+
+                /* For screens between 1440px and 1919px */
+                @media (max-width: 1919px) and (min-width: 1440px) {
+                    width: 80px;
+                }
+
+                /* For screens between 1024px and 1439px */
+                @media (max-width: 1439px) and (min-width: 1024px) {
+                    width: 60px;
+                }
+
+                /* For screens 1023px and narrower */
+                @media (max-width: 1023px) {
+                    width: 30px;
+                }
+            }
+        }
+    }
+}

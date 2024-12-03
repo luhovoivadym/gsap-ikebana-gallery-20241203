@@ -1,0 +1,42 @@
+.minimap-pointer {
+    position: fixed;
+    width: 100px;
+    height: 90px;
+    left: 2280px;
+    background-color: transparent;
+    border: solid 1px rgba(124, 124, 124, 1);
+    border-radius: 4px;
+    top: 233px;
+    opacity: 0;
+
+    @media (max-width: 2521px) and (min-width: 1920px) {
+        width: 100px;
+        height: 90px;
+        left: 1778px;
+        top: 370px;
+    }
+
+    /* For screens between 1440px and 1919px */
+    @media (max-width: 1919px) and (min-width: 1440px) {
+        width: 100px;
+        height: 90px;
+        left: 1311px;
+        top: 373px;
+    }
+
+    /* For screens between 1024px and 1439px */
+    @media (max-width: 1439px) and (min-width: 1024px) {
+        width: 74px;
+        height: 60px;
+        left: 931px;
+        top: 248px;
+    }
+
+    /* For screens 1023px and narrower */
+    @media (max-width: 1023px) {
+        width: 30px;
+        height: 36px;
+        left: 345px;
+        top: 617px;
+    }
+}

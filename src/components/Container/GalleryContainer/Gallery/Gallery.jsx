@@ -26,9 +26,9 @@ const Gallery = ({ isSingleColumn, imageIndexes, setShowImageName, setHoveredIma
         restart_pointer = 31639;
         parallax_rate = 0.085;
     } else if (window.innerWidth >= 393) {
-        stop_pointer = 4600;
-        restart_pointer = 35939;
-        parallax_rate = 0.09;
+        stop_pointer = 3300;
+        restart_pointer = 41507;
+        parallax_rate = 0.032;
     }
     if (scrollY < stop_pointer) {
         translateY = 0;
@@ -116,13 +116,13 @@ const Gallery = ({ isSingleColumn, imageIndexes, setShowImageName, setHoveredIma
                 } else if (screenWidth >= 393 && screenWidth < 1024) {
                     targetWidth = isSingleColumn ? 42 : 2000;
                     targetHeight = isSingleColumn ? 249 : 2150;
-                    targetLeft = isSingleColumn ? 344 : 0;
+                    targetLeft = isSingleColumn ? 338 : 0;
                     targetTop = isSingleColumn ? 564 : 0;
                     targetColor = isSingleColumn ? "rgba(210, 210, 210, 0.25)" : "white";
                 } else if (screenWidth < 393) {
                     targetWidth = isSingleColumn ? 42 : 2000;
                     targetHeight = isSingleColumn ? 249 : 2150;
-                    targetLeft = isSingleColumn ? 344 : 0;
+                    targetLeft = isSingleColumn ? 338 : 0;
                     targetTop = isSingleColumn ? 564 : 0;
                     targetColor = isSingleColumn ? "rgba(210, 210, 210, 0.25)" : "white";
                 }

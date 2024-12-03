@@ -22,9 +22,9 @@ const MinimapPointer = ({ isSingleColumn }) => {
         restart_pointer = 31639;
         parallax_rate = 0.085;
     } else if (window.innerWidth >= 393) {
-        stop_pointer = 4600;
-        restart_pointer = 35939;
-        parallax_rate = 0.09;
+        stop_pointer = 3300;
+        restart_pointer = 41507;
+        parallax_rate = 0.032;
     }
 
     if (scrollY < stop_pointer) {
